@@ -7,7 +7,7 @@ que funcione en múltiples países, inicialmente Perú y Chile
 ## Descripcion técnica
 
 > ####  Tecnología usada:
->
+> 
 > 1.  Node.js
 > 2.  Typescript
 > 3.  Persistencia DynamoDB
@@ -17,6 +17,11 @@ que funcione en múltiples países, inicialmente Perú y Chile
 >
 >  *Everything* is going according to **plan**.
 > 
+
+### Aquí se presenta una arquitectura basada en eventos que puede manejar agendamientos específicos por país utilizando servicios serverless en AWS:
+
+
+
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
 
