@@ -35,15 +35,14 @@ Breve explicación:
 * **S3**: Aloja el Frontend como un sitio web estático. En bucket S3, subimos los archivos de la aplicación frontend (HTML, CSS, JavaScript, etc.), configurando el bucket para funcionar como un sitio web estático.
 También configuramos las políticas de permisos del bucket para que los archivos sean accesibles públicamente (o a través de CloudFront), asegurando que solo los archivos estáticos necesarios sean visibles.
 
-* **API Gateway**: Recibe las solicitudes de agendamiento desde el frontend. Los clientes (en este caso el sistema de agendamiento web) envían solicitudes de agendamiento a través de API Gateway. API Gateway recibe las solicitudes y las pasa a una función Lambda inicial que valida la entrada y estructura el evento de agendamiento. Luego envía un evento de tipo "agendamiento" a Amazon EventBridge, el evento contiene información relevante, como el país de origen, fecha y hora de agendamiento, y detalles específicos del usuario. **EventBridge** filtra y enruta el evento en función del campo de país.
+* **API Gateway**: Recibe las solicitudes de agendamiento desde el frontend. Los clientes (en este caso el sistema de agendamiento web) envían solicitudes de agendamiento a través de API Gateway. API Gateway recibe las solicitudes y las pasa a una función Lambda inicial que valida la entrada y estructura el evento de agendamiento. Luego envía un evento de tipo "agendamiento" a Amazon EventBridge, el evento contiene información relevante, como el país de origen, fecha y hora de agendamiento, y detalles específicos del usuario.
+* **EventBridge** Gestiona la lógica de enrutamiento, enviando el evento de agendamiento a un Lambda específico de cada país según reglas de país.
 > Por ejemplo:
 > Para eventos de agendamiento de Perú, EventBridge envía el evento al Lambda processPeruAgendamiento.
 > Para eventos de agendamiento de Chile, EventBridge lo envía al Lambda processPeruAgendamiento
  
-* **Lambda**: Procesa y valida los datos de la solicitud inicial y publica un evento de agendamiento en Amazon EventBridge.
-* **EventBridge**: Gestiona la lógica de enrutamiento, enviando el evento de agendamiento a un Lambda específico de cada país según reglas de país.
-* **Lambda** (Country-specific processors): Procesadores específicos por país que manejan la lógica particular de cada región, como validaciones de reglas de negocio, disponibilidad de citas, etc.
-* **DynamoDB** o Aurora Serverless: Para almacenar y gestionar los detalles de los agendamientos. DynamoDB es ideal para una baja latencia y alta escalabilidad, pero si se requiere SQL, Aurora Serverless puede ser una buena alternativa.
+* **Lambda**: Procesadores específicos por país que manejan la lógica particular de cada región, como validaciones de reglas de negocio, disponibilidad de citas, doctores o asistentes por paises,etc.
+* **DynamoDB**: Estos son lambda específicos para cada país pueden escribir el resultado del agendamiento en una tabla DynamoDB, Para almacenar y gestionar los detalles de los agendamientos. DynamoDB es ideal para una baja latencia y alta escalabilidad, pero si se requiere SQL, Aurora Serverless puede ser una buena alternativa.  
 
 
 
