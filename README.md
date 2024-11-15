@@ -20,7 +20,8 @@ que funcione en múltiples países, inicialmente Perú y Chile
 
 ### Aquí se presenta una arquitectura basada en eventos que puede manejar agendamientos específicos por país utilizando servicios serverless en AWS:
 
-
+Gracias a la arquitectura en AWS aquí expuesta, el sistema es escalable, confiable y altamente disponible.
+Mediante EventBridge la solución es capaz de manejar diferentes lógicas de procesamiento por país (Chile & Perú) y eventualmente otros paises
 
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
