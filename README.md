@@ -254,14 +254,49 @@ Replicación global de DynamoDB para cubrir múltiples regiones, si es necesario
 Podríamos incorporar un nuevo opción o módulo adicional para manjear lógica por ejemplo, processNewPais en Lambda.
 Incluir reglas específicas en DynamoDB para gestionar los datos del nuevo territorio.
 
+**Identificar posibles cuellos de botella y proponer soluciones:**
+
+- En DynamoDB las operaciones de lectura/escritura podrían sobrepasar los límites de capacidad provisionada, generando latencias o errores
+- Consultas ineficientes debido a un diseño inadecuado del esquema.
+
+Posibles Soluciones:
+
+➣ Monitoreo: Configurar alarmas en CloudWatch para detectar límites de consumo
+➣ Optimización de consultas: Usar índices secundarios globales.
 
 
-- Identificar posibles cuellos de botella y proponer soluciones
+
 ## 5. Seguridad y Cumplimiento
 - Proponer medidas para asegurar la protección de datos sensibles
+
 ## 6. Monitoreo y Manejo de Errores
 - Describir cómo se implementaría el monitoreo del sistema
-- Proponer estrategias para el manejo de errores y reintentos
+Podemos implementar AWS CloudWatch y Paneles de control (Dashboards)
+
+Con AWS CloudWatch podemos:
+
+Gestionar Logs: Configurar registros detallados en Lambda, DynamoDB, y EventBridge para monitorear el tráfico y errores.
+Realizar Métricas personalizadas: Definir métricas clave, como el tiempo de ejecución promedio de las Lambdas o la latencia de EventBridge.
+Parea Alarmas: Establecer alertas para eventos críticos, como límites de capacidad alcanzados en DynamoDB o tasas altas de fallos en Lambda.
+
+**Algunas estrategias para el manejo de errores y reintentos**
+
+Fallas Transitorias:
+
+- Emplear el sistema de reintento automático integrado de AWS Lambda para manejar fallas momentáneas.
+
+-Fallas Anticipadas:
+
+-Verificar minuciosamente los datos de entrada antes de ejecutar la lógica de negocio.
+-Utilizar bloques try-catch en el código para capturar y gestionar errores identificables.
+
+Fallas Irrecuperables:
+
+-Registrar los incidentes en CloudWatch Logs o en una herramienta externa de monitoreo.
+
+
+
+
 ## 7. Código de Muestra
 - Proporcionar el código en NodeJs con soporte para Typescript con la solución de
 esta problemática.
