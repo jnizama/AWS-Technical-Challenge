@@ -27,6 +27,15 @@ Mediante EventBridge la solución es capaz de manejar diferentes lógicas de pro
 
 <img width="914" alt="image" src="https://github.com/user-attachments/assets/5e108269-97d0-402c-b7dd-82afd46ef790">
 
+Breve explicación:
+
+* **API Gateway**: Recibe las solicitudes de agendamiento desde el frontend.
+* **Lambda**: Procesa y valida los datos de la solicitud inicial y publica un evento de agendamiento en Amazon EventBridge.
+* **EventBridge**: Gestiona la lógica de enrutamiento, enviando el evento de agendamiento a un Lambda específico de cada país según reglas de país.
+* **Lambda** (Country-specific processors): Procesadores específicos por país que manejan la lógica particular de cada región, como validaciones de reglas de negocio, disponibilidad de citas, etc.
+* **DynamoDB** o Aurora Serverless: Para almacenar y gestionar los detalles de los agendamientos. DynamoDB es ideal para una baja latencia y alta escalabilidad, pero si se requiere SQL, Aurora Serverless puede ser una buena alternativa.
+
+
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
 
