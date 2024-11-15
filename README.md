@@ -23,7 +23,10 @@ que funcione en múltiples países, inicialmente Perú y Chile
 Gracias a la arquitectura en AWS aquí expuesta, el sistema es escalable, confiable y altamente disponible.
 Mediante EventBridge la solución es capaz de manejar diferentes lógicas de procesamiento por país (Chile & Perú) y eventualmente otros paises
 
-## Diagrama de la Arquitectura Serveless para Agendamiento de Citas
+# Tareas del Reto
+## 1. Diseño de Arquitectura 
+
+### Diagrama de la Arquitectura Serveless para Agendamiento de Citas
 
 <img width="914" alt="image" src="https://github.com/user-attachments/assets/5e108269-97d0-402c-b7dd-82afd46ef790">
 
