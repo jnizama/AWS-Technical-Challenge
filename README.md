@@ -1,6 +1,6 @@
 # Reto técnico Sistema de Agendamiento de Citas Médicas
 
-# Serverless - AWS - Node.js -  Typescript - persistencia DynamoDB - AWS API Gateway - WS Lambda
+## Serverless - AWS - Node.js -  Typescript - persistencia DynamoDB - AWS API Gateway - WS Lambda
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
 
