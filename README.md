@@ -4,7 +4,17 @@
 Una compañía de seguros necesita desarrollar un sistema de agendamiento de citas médicas
 que funcione en múltiples países, inicialmente Perú y Chile
 
-## Serverless - AWS - Node.js -  Typescript - persistencia DynamoDB - AWS API Gateway - WS Lambda
+## Descripcion técnica
+
+>> Tecnología usada:
+>>
+>> ** Marco Arquitectura Serverless AWS **:
+>> 1.  Node.js
+>> 2.  Typescript
+>> 3.  Persistencia DynamoDB
+>> 4.  API Gateway: Recibe las solicitudes de agendamiento desde el frontend
+>> 5.  WS Lambda: Procesa y valida los datos de la solicitud inicial y publica un evento de agendamiento en Amazon EventBridge.
+>> 6.  EventBridge: Gestiona la lógica de enrutamiento
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
 
