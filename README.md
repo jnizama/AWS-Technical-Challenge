@@ -44,6 +44,25 @@ También configuramos las políticas de permisos del bucket para que los archivo
 * **Lambda**: Procesadores específicos por país que manejan la lógica particular de cada región, como validaciones de reglas de negocio, disponibilidad de citas, doctores o asistentes por paises,etc.
 * **DynamoDB**: Estos son lambda específicos para cada país pueden escribir el resultado del agendamiento en una tabla DynamoDB, Para almacenar y gestionar los detalles de los agendamientos. DynamoDB es ideal para una baja latencia y alta escalabilidad, pero si se requiere SQL, Aurora Serverless puede ser una buena alternativa.  
 
+## 2. Manejo de Datos
+- Describir la estructura de datos para almacenar la información de
+agendamientos
+## 3. Procesamiento por País
+- Detallar cómo se implementaría la lógica específica por país
+- Describir cómo se podría agregar un nuevo país al sistema
+## 4. Escalabilidad y Rendimiento
+- Identificar posibles cuellos de botella y proponer soluciones
+## 5. Seguridad y Cumplimiento
+- Proponer medidas para asegurar la protección de datos sensibles
+## 6. Monitoreo y Manejo de Errores
+- Describir cómo se implementaría el monitoreo del sistema
+- Proponer estrategias para el manejo de errores y reintentos
+## 7. Código de Muestra
+- Proporcionar el código en NodeJs con soporte para Typescript con la solución de
+esta problemática.
+## 8. Consideraciones Adicionales
+- Discutir cómo se manejaría la latencia de respuesta al usuario
+
 
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
