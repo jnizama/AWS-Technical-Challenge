@@ -114,7 +114,7 @@ Una propuesta para la lógica por país podría implementarse mediante:
 a. Router de País
 Lambda Function principal actúa como router y redirige a funciones Lambda específicas para cada país basándose en el parámetro country del API Gateway.
 
-<script>
+<code>
  export async function handler(event: any): Promise<any> {
     const country = event.queryStringParameters.country;
 
@@ -127,13 +127,13 @@ Lambda Function principal actúa como router y redirige a funciones Lambda espec
             throw new Error("País no soportado");
     }
 }
-</script>
+</code>
 
 b. Modulo Específico por País
 Cada país tiene su propio módulo para encapsular la lógica. Por ejemplo:
 
 Lógica para Perú:
-<script>
+<code>
  export async function processPeru(event: any): Promise<any> {
     try {
         // Paso 1: Validar datos específicos para Perú
@@ -178,7 +178,7 @@ async function emitEvent(detailType: string, detail: any): Promise<void> {
         ],
     }).promise();
 }
-</script>
+</code>
 
 Lógica para Chile:
 typescript
