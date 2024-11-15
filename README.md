@@ -47,7 +47,9 @@ También configuramos las políticas de permisos del bucket para que los archivo
 ## 2. Manejo de Datos
 - Describir la estructura de datos para almacenar la información de agendamientos
 
+###DynamoDB
 **Paciente**
+
 La clase Paciente representa a un paciente en el sistema y contiene la información básica de cada persona:
 
 id (string): Identificador único del paciente.
@@ -57,6 +59,7 @@ telefono (string): Número de contacto del paciente.
 email (string): Dirección de correo electrónico del paciente.
 
 **Medico**
+
 La clase Medico representa a un médico en el sistema, con información de identificación y especialidad:
 
 id (string): Identificador único del médico.
@@ -64,6 +67,7 @@ nombre (string): Nombre completo del médico.
 especialidad (string): Especialización del médico (ej., "Cardiología", "Pediatría")
 
 **Pais**
+
 La clase Pais almacena la información sobre el país, permitiendo categorizar las citas de acuerdo al país donde se programan:
 
 id (string): Identificador único del país.
@@ -71,6 +75,7 @@ nombre (string): Nombre completo del país.
 codigo (string): Código ISO o abreviado del país (ej., "PE" para Perú, "MX" para México).
 
 **CitaMedica**
+
 La clase CitaMedica almacena la información específica de cada cita médica y se vincula tanto al Paciente como al Medico y Pais para relacionar los datos de manera completa.
 
 id (string): Identificador único de la cita médica.
@@ -103,8 +108,162 @@ Ejemplo de datos para una cita médica:
   
 ## 3. Procesamiento por País
 - Detallar cómo se implementaría la lógica específica por país
-- Describir cómo se podría agregar un nuevo país al sistema
+
+Una propuesta para la lógica por país podría implementarse mediante:
+
+a. Router de País
+Lambda Function principal actúa como router y redirige a funciones Lambda específicas para cada país basándose en el parámetro country del API Gateway.
+
+<script>
+ export async function handler(event: any): Promise<any> {
+    const country = event.queryStringParameters.country;
+
+    switch (country) {
+        case "PE":
+            return await processPeru(event);
+        case "CL":
+            return await processChile(event);
+        default:
+            throw new Error("País no soportado");
+    }
+}
+</script>
+
+b. Modulo Específico por País
+Cada país tiene su propio módulo para encapsular la lógica. Por ejemplo:
+
+Lógica para Perú:
+<script>
+ export async function processPeru(event: any): Promise<any> {
+    try {
+        // Paso 1: Validar datos específicos para Perú
+        const requestData = event.body;
+        validatePeru(requestData);
+
+        // Paso 2: Transformar y guardar los datos en DynamoDB
+        const cita = transformCita(requestData, "PE");
+        await saveToDynamoDB(cita);
+
+        // Paso 3: Emitir evento a EventBridge
+        await emitEvent("CitaCreada", cita);
+
+        // Responder con éxito
+        return {
+            statusCode: 201,
+            body: JSON.stringify(cita),
+        };
+    } catch (error) {
+        console.error("Error procesando la cita para Perú:", error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: "Error interno del servidor" }),
+        };
+    }
+}
+
+// Función para guardar datos en DynamoDB
+async function saveToDynamoDB(item: any): Promise<void> {
+    await dynamoDb.put({ TableName: "Citas", Item: item }).promise();
+}
+
+// Función para emitir eventos a EventBridge
+async function emitEvent(detailType: string, detail: any): Promise<void> {
+    await eventBridge.putEvents({
+        Entries: [
+            {
+                Source: "citas-system",
+                DetailType: detailType,
+                Detail: JSON.stringify(detail),
+            },
+        ],
+    }).promise();
+}
+</script>
+
+Lógica para Chile:
+typescript
+Copiar código
+
+<script>
+ export async function processChile(event: any): Promise<any> {
+    try {
+        // Paso 1: Validar datos específicos para Chile
+        const requestData = event.body;
+        validateChile(requestData);
+
+        // Paso 2: Transformar y guardar los datos en DynamoDB
+        const cita = transformCita(requestData, "CL");
+        await saveToDynamoDB(cita);
+
+        // Paso 3: Emitir evento a EventBridge
+        await emitEvent("CitaCreada", cita);
+
+        // Responder con éxito
+        return {
+            statusCode: 201,
+            body: JSON.stringify(cita),
+        };
+    } catch (error) {
+        console.error("Error procesando la cita para Chile:", error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: "Error interno del servidor" }),
+        };
+    }
+}
+
+// Función para validar datos específicos de Chile
+function validateChile(data: any): void {
+    // Implementar validaciones específicas para Chile
+    if (!data.rut || !/^[0-9]+-[0-9kK]$/.test(data.rut)) {
+        throw new Error("El RUT es inválido.");
+    }
+    if (!data.fecha || new Date(data.fecha).toString() === "Invalid Date") {
+        throw new Error("La fecha proporcionada no es válida.");
+    }
+    // Agregar más validaciones según sea necesario
+}
+
+// Función para guardar datos en DynamoDB
+async function saveToDynamoDB(item: any): Promise<void> {
+    await dynamoDb.put({ TableName: "Citas", Item: item }).promise();
+}
+
+// Función para emitir eventos a EventBridge
+async function emitEvent(detailType: string, detail: any): Promise<void> {
+    await eventBridge.putEvents({
+        Entries: [
+            {
+                Source: "citas-system",
+                DetailType: detailType,
+                Detail: JSON.stringify(detail),
+            },
+        ],
+    }).promise();
+}
+</script>
+
+En chile se maneja RUT
+
 ## 4. Escalabilidad y Rendimiento
+
+**Capacidad de Crecimiento y Resiliencia**
+Capacidad de Crecimiento:
+DynamoDB con capacidad de lectura y escritura adaptable (modo On-Demand).
+Lambda con escalado automático según la demanda.
+EventBridge para desacoplar la gestión de eventos y su procesamiento.
+
+Resiliencia:
+Servicios Serverless (DynamoDB, Lambda, API Gateway) con redundancia nativa.
+Replicación global de DynamoDB para cubrir múltiples regiones, si es necesario.
+
+*Expansión a Nuevos Territorios:*
+
+Podríamos incorporar un nuevo opción o módulo adicional para manjear lógica por ejemplo, processNewPais en Lambda.
+Incluir reglas específicas en DynamoDB para gestionar los datos del nuevo territorio.
+
+
+
 - Identificar posibles cuellos de botella y proponer soluciones
 ## 5. Seguridad y Cumplimiento
 - Proponer medidas para asegurar la protección de datos sensibles
