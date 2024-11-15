@@ -1,5 +1,9 @@
 # Reto técnico Sistema de Agendamiento de Citas Médicas
 
+### Descripción del negocio
+Una compañía de seguros necesita desarrollar un sistema de agendamiento de citas médicas
+que funcione en múltiples países, inicialmente Perú y Chile
+
 ## Serverless - AWS - Node.js -  Typescript - persistencia DynamoDB - AWS API Gateway - WS Lambda
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
