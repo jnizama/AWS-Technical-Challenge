@@ -405,6 +405,9 @@ export default class CitaMedicaRepository {
   }  
 </code>
 
+<img width="268" alt="image" src="https://github.com/user-attachments/assets/2810b42f-8651-4cb2-bc60-76edc3bda20e">
+
+
 ## 8. Consideraciones Adicionales
 - Respecto a la latencia de respuesta al usuario:
 
