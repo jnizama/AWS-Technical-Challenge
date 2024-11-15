@@ -66,12 +66,15 @@ esta problemática.
 # Anexo
 ## Especificaciones adicionales del proyecto trabajado
 
-Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
+El proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
+Se usó Visual Studio Code y AWS Toolkit
+
+<img width="911" alt="image" src="https://github.com/user-attachments/assets/7c5523a2-2da7-424d-a73a-cd9e8b4fc53f">
 
 más información técnica en https://www.serverless.com/framework/docs/providers/aws/
 
-## Instalación y despliegue
 
+## Instalación y despliegue
 
 > **Requerimientos**: NodeJS `lts/fermium (v.14.15.0)`. o [nvm](https://github.com/nvm-sh/nvm), ejecutar `nvm use` 
 
