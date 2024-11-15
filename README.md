@@ -63,7 +63,8 @@ esta problemática.
 ## 8. Consideraciones Adicionales
 - Discutir cómo se manejaría la latencia de respuesta al usuario
 
-
+# Anexo
+## Especificaciones adicionales del proyecto trabajado
 
 Este proyecto fue generado con la plantilla `aws-nodejs-typescript` basado en [Serverless framework](https://www.serverless.com/).
 
