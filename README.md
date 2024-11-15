@@ -178,8 +178,6 @@ async function emitEvent(detailType: string, detail: any): Promise<void> {
 </code>
 
 Lógica para Chile:
-typescript
-Copiar código
 
 <code>
  export async function processChile(event: any): Promise<any> {
