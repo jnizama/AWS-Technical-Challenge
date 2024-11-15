@@ -133,20 +133,18 @@ b. Modulo Específico por País
 Cada país tiene su propio módulo para encapsular la lógica. Por ejemplo:
 
 Lógica para Perú:
+
 <code>
  export async function processPeru(event: any): Promise<any> {
     try {
         // Paso 1: Validar datos específicos para Perú
         const requestData = event.body;
         validatePeru(requestData);
-
         // Paso 2: Transformar y guardar los datos en DynamoDB
         const cita = transformCita(requestData, "PE");
         await saveToDynamoDB(cita);
-
         // Paso 3: Emitir evento a EventBridge
         await emitEvent("CitaCreada", cita);
-
         // Responder con éxito
         return {
             statusCode: 201,
@@ -160,7 +158,6 @@ Lógica para Perú:
         };
     }
 }
-
 // Función para guardar datos en DynamoDB
 async function saveToDynamoDB(item: any): Promise<void> {
     await dynamoDb.put({ TableName: "Citas", Item: item }).promise();
@@ -184,20 +181,17 @@ Lógica para Chile:
 typescript
 Copiar código
 
-<script>
+<code>
  export async function processChile(event: any): Promise<any> {
     try {
         // Paso 1: Validar datos específicos para Chile
         const requestData = event.body;
         validateChile(requestData);
-
         // Paso 2: Transformar y guardar los datos en DynamoDB
         const cita = transformCita(requestData, "CL");
         await saveToDynamoDB(cita);
-
         // Paso 3: Emitir evento a EventBridge
         await emitEvent("CitaCreada", cita);
-
         // Responder con éxito
         return {
             statusCode: 201,
@@ -241,7 +235,7 @@ async function emitEvent(detailType: string, detail: any): Promise<void> {
         ],
     }).promise();
 }
-</script>
+</code>
 
 En chile se maneja RUT
 
