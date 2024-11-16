@@ -34,7 +34,7 @@ Mediante EventBridge la solución es capaz de manejar diferentes lógicas de pro
 
 <img width="914" alt="image" src="https://github.com/user-attachments/assets/5e108269-97d0-402c-b7dd-82afd46ef790">
 
-_Diseñado en Canvas_
+_Diseñado en [Canvas](https://www.canva.com/)_
 
 Breve explicación:
 
