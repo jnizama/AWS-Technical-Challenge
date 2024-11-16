@@ -59,9 +59,13 @@ También configuramos las políticas de permisos del bucket para que los archivo
 La clase Paciente representa a un paciente en el sistema y contiene la información básica de cada persona:
 
 id (string): Identificador único del paciente.
+
 nombre (string): Nombre completo del paciente.
+
 edad (number): Edad del paciente.
+
 telefono (string): Número de contacto del paciente.
+
 email (string): Dirección de correo electrónico del paciente.
 
 **Medico**
@@ -69,7 +73,9 @@ email (string): Dirección de correo electrónico del paciente.
 La clase Medico representa a un médico en el sistema, con información de identificación y especialidad:
 
 id (string): Identificador único del médico.
+
 nombre (string): Nombre completo del médico.
+
 especialidad (string): Especialización del médico (ej., "Cardiología", "Pediatría")
 
 **Pais**
@@ -77,7 +83,9 @@ especialidad (string): Especialización del médico (ej., "Cardiología", "Pedia
 La clase Pais almacena la información sobre el país, permitiendo categorizar las citas de acuerdo al país donde se programan:
 
 id (string): Identificador único del país.
+
 nombre (string): Nombre completo del país.
+
 codigo (string): Código ISO o abreviado del país (ej., "PE" para Perú, "MX" para México).
 
 **CitaMedica**
@@ -85,11 +93,17 @@ codigo (string): Código ISO o abreviado del país (ej., "PE" para Perú, "MX" p
 La clase CitaMedica almacena la información específica de cada cita médica y se vincula tanto al Paciente como al Medico y Pais para relacionar los datos de manera completa.
 
 id (string): Identificador único de la cita médica.
+
 nombrePaciente (string): Nombre del paciente que programó la cita.
+
 fecha (Date): Fecha en que se programó la cita.
+
 hora (string): Hora específica de la cita (ej., "10:30 AM").
+
 medicoAsignado (Medico): Referencia al objeto Medico que representa al médico asignado a esta cita.
+
 pais (Pais): Referencia al objeto Pais que indica en qué país se realiza la cita.
+
 estado (enum): Estado actual de la cita, que puede ser:
 "pendiente"
 "confirmada"
