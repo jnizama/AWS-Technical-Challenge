@@ -4,6 +4,10 @@
 Una compañía de seguros necesita desarrollar un sistema de agendamiento de citas médicas
 que funcione en múltiples países, inicialmente Perú y Chile
 
+### Requirements 
+An insurance company needs to develop a medical appointment scheduling system
+that works in multiple countries, initially Peru and Chile
+
 ## Descripcion técnica
 
 > ####  Tecnología usada:
