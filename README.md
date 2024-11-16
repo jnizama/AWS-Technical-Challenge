@@ -36,8 +36,6 @@ Mediante EventBridge la solución es capaz de manejar diferentes lógicas de pro
 
 _Diseñado en Canvas_
 
-<span style="color: rgba(255, 0, 0, 0.5);">Diseñado en Canvas</span>
-
 Breve explicación:
 
 * **S3**: Aloja el Frontend como un sitio web estático. En bucket S3, subimos los archivos de la aplicación frontend (HTML, CSS, JavaScript, etc.), configurando el bucket para funcionar como un sitio web estático.
