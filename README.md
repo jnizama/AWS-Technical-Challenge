@@ -262,12 +262,14 @@ Incluir reglas específicas en DynamoDB para gestionar los datos del nuevo terri
 
 **Identificar posibles cuellos de botella y proponer soluciones:**
 
-- En DynamoDB las operaciones de lectura/escritura podrían sobrepasar los límites de capacidad provisionada, generando latencias o errores
-- Consultas ineficientes debido a un diseño inadecuado del esquema.
+➣ En DynamoDB las operaciones de lectura/escritura podrían sobrepasar los límites de capacidad provisionada, generando latencias o errores
+
+➣ Consultas ineficientes debido a un diseño inadecuado del esquema.
 
 Posibles Soluciones:
 
 ➣ Monitoreo: Configurar alarmas en CloudWatch para detectar límites de consumo
+
 ➣ Optimización de consultas: Usar índices secundarios globales.
 
 
@@ -289,17 +291,16 @@ Parea Alarmas: Establecer alertas para eventos críticos, como límites de capac
 
 Fallas Transitorias:
 
-- Emplear el sistema de reintento automático integrado de AWS Lambda para manejar fallas momentáneas.
+➣ Emplear el sistema de reintento automático integrado de AWS Lambda para manejar fallas momentáneas.
 
--Fallas Anticipadas:
+➣ Fallas Anticipadas:
 
--Verificar minuciosamente los datos de entrada antes de ejecutar la lógica de negocio.
--Utilizar bloques try-catch en el código para capturar y gestionar errores identificables.
+ - Verificar minuciosamente los datos de entrada antes de ejecutar la lógica de negocio.
+ - Utilizar bloques try-catch en el código para capturar y gestionar errores identificables.
 
 Fallas Irrecuperables:
 
 -Registrar los incidentes en CloudWatch Logs o en una herramienta externa de monitoreo.
-
 
 
 
