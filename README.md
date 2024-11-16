@@ -33,6 +33,7 @@ Mediante EventBridge la solución es capaz de manejar diferentes lógicas de pro
 ### Diagrama de la Arquitectura Serveless para Agendamiento de Citas
 
 <img width="914" alt="image" src="https://github.com/user-attachments/assets/5e108269-97d0-402c-b7dd-82afd46ef790">
+
 <small>Diseñado en Canvas</small>
 
 Breve explicación:
