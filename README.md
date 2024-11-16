@@ -53,7 +53,7 @@ También configuramos las políticas de permisos del bucket para que los archivo
 ## 2. Manejo de Datos
 - Describir la estructura de datos para almacenar la información de agendamientos
 
-###DynamoDB
+*DynamoDB*
 **Paciente**
 
 La clase Paciente representa a un paciente en el sistema y contiene la información básica de cada persona:
