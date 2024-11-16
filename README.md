@@ -93,7 +93,7 @@ creadoEn (Date): Fecha en que se creó la cita.
 
 Ejemplo de datos para una cita médica:
 
-<code>
+`
  {
   id: "cita101",
   nombrePaciente: "Juan Pérez",
@@ -104,7 +104,7 @@ Ejemplo de datos para una cita médica:
   estado: "pendiente",
   creadoEn: new Date("2024-11-01")
 }
-</code>
+`
   
 ## 3. Procesamiento por País
 - Detallar cómo se implementaría la lógica específica por país
