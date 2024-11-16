@@ -93,7 +93,7 @@ creadoEn (Date): Fecha en que se creó la cita.
 
 Ejemplo de datos para una cita médica:
 
-`
+`javascript
  {
   id: "cita101",
   nombrePaciente: "Juan Pérez",
