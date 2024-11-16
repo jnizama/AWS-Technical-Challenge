@@ -116,7 +116,7 @@ Ejemplo de datos para una cita médica:
 `
  {
   id: "cita101",
-  nombrePaciente: "Juan Pérez",
+  nombrePaciente: "Pepe Pancho",
   fecha: new Date("2024-12-01"),
   hora: "10:30 AM",
   medicoAsignado: { id: "med456", nombre: "Dra. María García", especialidad: "Cardiología" },
