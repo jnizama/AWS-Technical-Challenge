@@ -134,7 +134,7 @@ Cada país tiene su propio módulo para encapsular la lógica. Por ejemplo:
 
 Lógica para Perú:
 
-<code>
+```javascript
  export async function processPeru(event: any): Promise<any> {
     try {
         // Paso 1: Validar datos específicos para Perú
@@ -175,11 +175,11 @@ async function emitEvent(detailType: string, detail: any): Promise<void> {
         ],
     }).promise();
 }
-</code>
+```
 
 Lógica para Chile:
 
-<code>
+```javascript
  export async function processChile(event: any): Promise<any> {
     try {
         // Paso 1: Validar datos específicos para Chile
@@ -233,7 +233,7 @@ async function emitEvent(detailType: string, detail: any): Promise<void> {
         ],
     }).promise();
 }
-</code>
+```
 
 En chile se maneja RUT
 
@@ -300,7 +300,7 @@ Fallas Irrecuperables:
 ## 7. Código de Muestra
 - Código en NodeJs:
 
-<code>
+```javascript
  import * as AWS from "aws-sdk";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { CitaMedica } from "src/models/CitaMedica"; 
@@ -403,7 +403,7 @@ export default class CitaMedicaRepository {
         };
     }
   }  
-</code>
+```
 
 <img width="268" alt="image" src="https://github.com/user-attachments/assets/2810b42f-8651-4cb2-bc60-76edc3bda20e">
 
